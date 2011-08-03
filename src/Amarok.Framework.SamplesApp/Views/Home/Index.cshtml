@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<h2>@ViewBag.Message</h2>
+<p>
+    @*Multi-token statements syntax*@
+    @(this.GetLocalResource<string>("Content"))
+</p>
+<p>
+    @(this.GetGlobalResource<string>("Labels", "Copyright"))
+</p>

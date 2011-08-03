@@ -14,27 +14,23 @@ namespace Amarok.Framework.Web.Mvc
 
             foreach (char ch in urlToEncode)
             {
+                string textToAppend = string.Empty;
                 switch (ch)
                 {
                     case ' ':
-                        url.Append('-');
+                        textToAppend = "-";
                         break;
                     case '&':
-                        url.Append("and");
+                        textToAppend = "and";
                         break;
-                    case '\'':
-                        break;
+                    case '\'':                    
+                        continue;
                     default:
-                        if ((ch >= '0' && ch <= '9') || (ch >= 'a' && ch <= 'z'))
-                        {
-                            url.Append(ch);
-                        }
-                        else
-                        {
-                            url.Append('-');
-                        }
+                        textToAppend = (ch >= '0' && ch <= '9') || (ch >= 'a' && ch <= 'z') ?
+                            ch.ToString() : "-";
                         break;
                 }
+                url.Append(textToAppend);
             }
             return url.ToString();
         }

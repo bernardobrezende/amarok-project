@@ -120,4 +120,7 @@
   <data name="Content" xml:space="preserve">
     <value>Conteúdo local da página em português brazuca.</value>
   </data>
+  <data name="HtmlContent" xml:space="preserve">
+    <value>Content &lt;strong&gt;htmled content&lt;/strong&gt; &lt;em&gt;htmled content&lt;/em&gt;</value>
+  </data>
 </root>

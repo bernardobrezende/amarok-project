@@ -15,6 +15,18 @@ namespace Amarok.Framework.Web.Mvc
         {
             var context = GetPageHttpContext(page);
             return (T)context.GetGlobalResourceObject(resourceName, resourceKey);
+        }       
+
+        public static MvcHtmlString GetLocalResource(this WebViewPage page, string resourceKey)
+        {
+            string htmlString = GetLocalResource<string>(page, resourceKey);
+            return new MvcHtmlString(htmlString);
+        }
+
+        public static MvcHtmlString GetGlobalResource(this WebViewPage page, string resourceName, string resourceKey)
+        {
+            string htmlString = GetGlobalResource<string>(page, resourceName, resourceKey);
+            return new MvcHtmlString(htmlString);
         }
 
         private static HttpContextBase GetPageHttpContext(WebViewPage page)

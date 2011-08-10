@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{2E38
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amarok.Framework.SamplesApp", "Amarok.Framework.SamplesApp\Amarok.Framework.SamplesApp.csproj", "{0557B7AE-ABA3-4C45-BE62-789B34F70EC1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amarok.Framework", "Amarok.Framework\Amarok.Framework.csproj", "{98C42093-1EE0-4C67-B362-C40BFE764499}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,12 +25,17 @@ Global
 		{0557B7AE-ABA3-4C45-BE62-789B34F70EC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0557B7AE-ABA3-4C45-BE62-789B34F70EC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0557B7AE-ABA3-4C45-BE62-789B34F70EC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98C42093-1EE0-4C67-B362-C40BFE764499}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98C42093-1EE0-4C67-B362-C40BFE764499}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98C42093-1EE0-4C67-B362-C40BFE764499}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98C42093-1EE0-4C67-B362-C40BFE764499}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{EF11B100-267C-43A7-81FA-F31D43D297FA} = {F9168333-0745-40E2-BA03-FCB81B3C0B81}
+		{98C42093-1EE0-4C67-B362-C40BFE764499} = {F9168333-0745-40E2-BA03-FCB81B3C0B81}
 		{0557B7AE-ABA3-4C45-BE62-789B34F70EC1} = {2E3869BC-49EC-4F87-A893-6E82AC5B532D}
 	EndGlobalSection
 EndGlobal

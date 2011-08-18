@@ -155,11 +155,11 @@ namespace Amarok.Framework.SamplesApp.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult ChangeEmail(ChangeEmailModel model)
-        {
-            return View();
-        }
+        //[HttpPost]
+        //public ActionResult ChangeEmail(ChangeEmailModel model)
+        //{
+        //    return View();
+        //}
 
         #region Status Codes
         private static string ErrorCodeToString(MembershipCreateStatus createStatus)

@@ -1,4 +1,5 @@
-﻿using Amarok.Framework.Extensions;
+﻿using System.Globalization;
+using Amarok.Framework.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Amarok.Framework.Tests.Decimal
@@ -9,12 +10,7 @@ namespace Amarok.Framework.Tests.Decimal
     [TestClass]
     public class DecimalTests
     {
-        public DecimalTests()
-        {
-            //
-            // TODO: Add constructor logic here
-            //
-        }
+        public DecimalTests() { }
 
         private TestContext testContextInstance;
 
@@ -34,27 +30,41 @@ namespace Amarok.Framework.Tests.Decimal
             }
         }
 
-        #region Additional test attributes
-        //
-        // You can use the following additional attributes as you write your tests:
-        //
-        // Use ClassInitialize to run code before running the first test in the class
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // Use ClassCleanup to run code after all tests in a class have run
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // Use TestInitialize to run code before running each test 
-        // [TestInitialize()]
-        // public void MyTestInitialize() { }
-        //
-        // Use TestCleanup to run code after each test has run
-        // [TestCleanup()]
-        // public void MyTestCleanup() { }
-        //
-        #endregion
+        [TestMethod]
+        public void If_I_Call_ToString_From_0_Decimal_And_One_Decimal_Place()
+        {
+            decimal input = 0.0M;
+            string result = input.ToString(1);
+            //
+            Assert.AreEqual("0.0", result);
+        }
+
+        [TestMethod]
+        public void If_I_Call_ToString_From_0_Decimal_And_One_Decimal_Place_And_Specific_Culture()
+        {
+            decimal input = 0.0M;
+            string result = input.ToString(1, new CultureInfo("pt-BR"));
+            //
+            Assert.AreEqual("0,0", result);
+        }
+
+        [TestMethod]
+        public void If_I_Call_ToString_From_0_Decimal_And_No_Decimal_Places()
+        {
+            decimal input = 0.0M;
+            string result = input.ToString(0);
+            //
+            Assert.AreEqual("0", result);
+        }
+
+        [TestMethod]
+        public void If_I_Call_ToString_From_0_Decimal_And_No_Decimal_Places_And_Specific_Culture()
+        {
+            decimal input = 0.0M;
+            string result = input.ToString(0, new CultureInfo("pt-BR"));
+            //
+            Assert.AreEqual("0", result);
+        }
 
         [TestMethod]
         public void If_I_Call_ToString_From_A_Decimal_With_2_Decimal_Cases()
@@ -69,9 +79,72 @@ namespace Amarok.Framework.Tests.Decimal
         public void If_I_Call_ToString_From_A_Decimal_With_2_Decimal_Cases_And_Specific_Culture()
         {
             decimal input = 49.1234M;
-            string result = input.ToString(2, new System.Globalization.CultureInfo("pt-BR"));
+            string result = input.ToString(2, new CultureInfo("pt-BR"));
             //
             Assert.AreEqual("49,12", result);
+        }
+
+        [TestMethod]
+        public void If_I_Call_ToString_From_A_Decimal_With_3_Decimal_Cases()
+        {
+            decimal input = 120.88750M;
+            string result = input.ToString(3);
+            //
+            Assert.AreEqual("120.887", result);
+        }
+
+        [TestMethod]
+        public void If_I_Call_ToString_From_A_Decimal_With_3_Decimal_Cases_And_Specific_Culture()
+        {
+            decimal input = 120.88750M;
+            string result = input.ToString(3, new CultureInfo("pt-BR"));
+            //
+            Assert.AreEqual("120,887", result);
+        }
+
+        [TestMethod]
+        public void If_I_Call_ToString_From_A_Decimal_Without_Decimal_Cases()
+        {
+            decimal input = 120M;
+            string result = input.ToString(3);
+            //
+            Assert.AreEqual("120", result);
+        }
+
+        [TestMethod]
+        public void If_I_Call_ToString_From_A_Decimal_Without_Decimal_Cases_And_Specific_Culture()
+        {
+            decimal input = 120M;
+            string result = input.ToString(3, new CultureInfo("pt-BR"));
+            //
+            Assert.AreEqual("120", result);
+        }
+
+        [TestMethod]
+        public void If_I_Call_ToString_From_Negative_Decimal_And_One_Decimal_Place()
+        {
+            decimal input = -10.1M;
+            string result = input.ToString(1);
+            //
+            Assert.AreEqual("-10.1", result);
+        }
+
+        [TestMethod]
+        public void If_I_Call_ToString_From_Negative_Decimal_And_Without_Decimal_Places()
+        {
+            decimal input = -10.1M;
+            string result = input.ToString(0);
+            //
+            Assert.AreEqual("-10", result);
+        }
+
+        [TestMethod]
+        public void If_I_Call_ToString_From_Negative_Decimal_And_Specific_Culture()
+        {
+            decimal input = -23.1M;
+            string result = input.ToString(0, new CultureInfo("pt-BR"));
+            //
+            Assert.AreEqual("-23", result);
         }
     }
 }

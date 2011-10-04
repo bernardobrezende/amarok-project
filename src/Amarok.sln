@@ -11,7 +11,23 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amarok.Framework.SamplesApp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amarok.Framework", "Amarok.Framework\Amarok.Framework.csproj", "{98C42093-1EE0-4C67-B362-C40BFE764499}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9ECF5ADF-EED8-41B4-8B70-EE8E31105BCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amarok.Framework.Tests", "..\tests\Amarok.Framework.Tests\Amarok.Framework.Tests.csproj", "{68BE7E0D-91B1-4372-8DA0-72EF8498BEB4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{477FA6C0-4FC6-4DF7-8969-D8275E503C50}"
+	ProjectSection(SolutionItems) = preProject
+		Amarok.vsmdi = Amarok.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amarok.Framework.NHibernate", "Amarok.Framework.NHibernate\Amarok.Framework.NHibernate.csproj", "{11A94AE5-BB1C-41E1-BCB4-D8CAA7212AB1}"
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Amarok.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -29,6 +45,14 @@ Global
 		{98C42093-1EE0-4C67-B362-C40BFE764499}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98C42093-1EE0-4C67-B362-C40BFE764499}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98C42093-1EE0-4C67-B362-C40BFE764499}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68BE7E0D-91B1-4372-8DA0-72EF8498BEB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68BE7E0D-91B1-4372-8DA0-72EF8498BEB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68BE7E0D-91B1-4372-8DA0-72EF8498BEB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68BE7E0D-91B1-4372-8DA0-72EF8498BEB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11A94AE5-BB1C-41E1-BCB4-D8CAA7212AB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11A94AE5-BB1C-41E1-BCB4-D8CAA7212AB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11A94AE5-BB1C-41E1-BCB4-D8CAA7212AB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11A94AE5-BB1C-41E1-BCB4-D8CAA7212AB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,6 +60,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{EF11B100-267C-43A7-81FA-F31D43D297FA} = {F9168333-0745-40E2-BA03-FCB81B3C0B81}
 		{98C42093-1EE0-4C67-B362-C40BFE764499} = {F9168333-0745-40E2-BA03-FCB81B3C0B81}
+		{11A94AE5-BB1C-41E1-BCB4-D8CAA7212AB1} = {F9168333-0745-40E2-BA03-FCB81B3C0B81}
 		{0557B7AE-ABA3-4C45-BE62-789B34F70EC1} = {2E3869BC-49EC-4F87-A893-6E82AC5B532D}
+		{68BE7E0D-91B1-4372-8DA0-72EF8498BEB4} = {9ECF5ADF-EED8-41B4-8B70-EE8E31105BCB}
+		{477FA6C0-4FC6-4DF7-8969-D8275E503C50} = {9ECF5ADF-EED8-41B4-8B70-EE8E31105BCB}
 	EndGlobalSection
 EndGlobal

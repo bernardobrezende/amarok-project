@@ -45,7 +45,8 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Decimal\DecimalTests.cs" />
+    <Compile Include="Extensions\DecimalExtensionsTests.cs" />
+    <Compile Include="Extensions\IListExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Contracts\EnsureTests.cs" />
   </ItemGroup>

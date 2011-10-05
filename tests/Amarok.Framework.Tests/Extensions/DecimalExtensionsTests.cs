@@ -2,15 +2,15 @@
 using Amarok.Framework.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Amarok.Framework.Tests.Decimal
+namespace Amarok.Framework.Tests.Extensions
 {
     /// <summary>
     /// Summary description for DecimalTest
     /// </summary>
     [TestClass]
-    public class DecimalTests
+    public class DecimalExtensionsTests
     {
-        public DecimalTests() { }
+        public DecimalExtensionsTests() { }
 
         private TestContext testContextInstance;
 
@@ -144,7 +144,7 @@ namespace Amarok.Framework.Tests.Decimal
             decimal input = -23.1M;
             string result = input.ToString(0, new CultureInfo("pt-BR"));
             //
-            Assert.AreEqual("-23", result);
+            Assert.AreEqual("-23", result);            
         }
     }
 }

@@ -1,0 +1,12 @@
+h1. Amarok Project
+
+Welcome to Amarok Project's repository.
+
+h2. Development environemnt
+
+h3. Requirements
+* .NET Framework 4.0
+
+h2. Code License
+
+Amarok Project's source code is under the MIT license (check out more in http://www.opensource.org/licenses/MIT).

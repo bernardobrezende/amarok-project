@@ -1,44 +1,49 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Reflection;
 
 namespace Amarok.Framework.Contracts
 {
     public class Ensure
-    {
-        private static Predicate<bool> currentPredicate = null;
-        
-        private Ensure(Predicate<bool> currentPred)
+    {        
+        private bool actualAssertion = true;
+        private bool expected = true;
+
+        private Ensure(bool condition)
         {
-            currentPredicate = currentPred;
+            this.actualAssertion = condition;
         }
 
-        private Ensure()
+        private Ensure(bool condition, bool mustBe)
+            : this(condition)
         {
-            currentPredicate = new Predicate<bool>(x => x);
+            this.expected = mustBe;
         }
 
-        public static Ensure That(Predicate<bool> func)
+        public static Ensure That(bool assertion)
         {
-            return new Ensure(func);
+            return new Ensure(assertion);
         }
 
-        public void IsTrue()
-        {
-            bool assertion = currentPredicate.Invoke(true);
-
-            if (!assertion)
-                // TODO [Exceptions]: Define error type and message
-                throw new Exception("");
+        public Ensure IsTrue()
+        {            
+            return new Ensure(this.actualAssertion, true);
         }
 
-        public void IsFalse()
-        {
-            bool assertion = currentPredicate.Invoke(false);
+        public Ensure IsFalse()
+        {            
+            return new Ensure(this.actualAssertion, false);
+        }
 
-            if (assertion)
-                // TODO [Exceptions]: Define error type and message
-                throw new Exception("");
+        public Ensure Otherwise()
+        {
+            return new Ensure(this.actualAssertion, this.expected);
+        }
+
+        public void Throw<T>(string message = default(string))
+            where T : Exception
+        {
+            var exception = (T)Activator.CreateInstance(typeof(T), new[] { message });
+            if (this.actualAssertion != this.expected)
+                throw exception;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Amarok.Framework.Contracts;
 
 namespace Amarok.Framework.Extensions
 {
@@ -7,9 +8,10 @@ namespace Amarok.Framework.Extensions
     {
         public static void Swap<T>(this IList<T> list, int currentIndex, int destinationIndex)
         {
-            if (currentIndex > list.Count || currentIndex < 0 ||
-                destinationIndex > list.Count || destinationIndex < 0)
-                throw new IndexOutOfRangeException("Informed indexes cannot be out of the list's range.");
+            Ensure.That(currentIndex >= 0 && currentIndex < list.Count && destinationIndex >= 0 && destinationIndex < list.Count)
+                .IsTrue()
+                .Otherwise()
+                .Throw<IndexOutOfRangeException>("Informed indexes cannot be out of the list's range.");
             //
             if (currentIndex != destinationIndex)
             {

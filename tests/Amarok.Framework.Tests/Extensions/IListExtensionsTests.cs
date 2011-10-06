@@ -38,7 +38,7 @@ namespace Amarok.Framework.Tests.Extensions
             letters.Swap<char>(1, 3);
 
             Assert.IsTrue(letters.IndexOf('z') == 3);
-            Assert.IsTrue(letters.IndexOf('d') == 1);
+            Assert.IsTrue(letters.IndexOf('d') == 1);            
         }
 
         [TestMethod]
@@ -56,7 +56,7 @@ namespace Amarok.Framework.Tests.Extensions
         public void If_I_Try_To_Swap_Positions_Nonexistent()
         {
             IList<char> letters = new List<char> { 'z', };
-            letters.Swap<char>(0, 6);
+            letters.Swap<char>(0, 1);
         }
 
         [TestMethod]

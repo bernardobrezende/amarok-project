@@ -53,9 +53,14 @@ namespace Amarok.Framework.Cache
 
         public bool Add<T>(T item, string key, TimeSpan expirationTime)
         {
+            Ensure.That(item != null && !String.IsNullOrEmpty(key))
+                .IsTrue()
+                .Otherwise
+                .Throw<ArgumentException>("Unable to add the informed key-value pair to the cache.");
+            //            
             lock (SyncRoot)
-            {
-                if (item != null && !Has(key))
+            {                
+                if (!Has(key))
                 {
                     Cache.Add(new CacheItem(key, item), new CacheItemPolicy()
                     {

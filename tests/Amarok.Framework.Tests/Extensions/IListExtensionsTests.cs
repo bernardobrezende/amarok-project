@@ -109,6 +109,6 @@ namespace Amarok.Framework.Tests.Extensions
         {
             IList<char> letters = new List<char> { 'z', 'a', 'b', 'w', 'm', };
             letters.Swap<char>('g', '2');            
-        }
+        }       
     }
 }

@@ -10,7 +10,7 @@ namespace Amarok.Framework.Extensions
         {
             Ensure.That(currentIndex >= 0 && currentIndex < list.Count && destinationIndex >= 0 && destinationIndex < list.Count)
                 .IsTrue()
-                .Otherwise()
+                .Otherwise
                 .Throw<IndexOutOfRangeException>("Informed indexes cannot be out of the list's range.");
             //
             if (currentIndex != destinationIndex)

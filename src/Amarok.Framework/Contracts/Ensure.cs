@@ -12,10 +12,10 @@ namespace Amarok.Framework.Contracts
             this.actualAssertion = condition;
         }
 
-        private Ensure(bool condition, bool mustBe)
+        private Ensure(bool condition, bool expected)
             : this(condition)
         {
-            this.expected = mustBe;
+            this.expected = expected;
         }
 
         public static Ensure That(bool assertion)
@@ -33,9 +33,9 @@ namespace Amarok.Framework.Contracts
             return new Ensure(this.actualAssertion, false);
         }
 
-        public Ensure Otherwise()
+        public Ensure Otherwise
         {
-            return new Ensure(this.actualAssertion, this.expected);
+            get { return this; }
         }
 
         public void Throw<T>(string message = default(string))

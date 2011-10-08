@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Amarok.Framework.Contracts
 {
@@ -6,6 +7,9 @@ namespace Amarok.Framework.Contracts
     {        
         private bool actualAssertion = true;
         private bool expected = true;
+        // TODO [Contracts]: Segregate into many interfaces
+        private object value;
+        private object[] values;
 
         private Ensure(bool condition)
         {
@@ -18,9 +22,30 @@ namespace Amarok.Framework.Contracts
             this.expected = expected;
         }
 
+        private Ensure(object value)
+        {
+            this.value = value;
+        }
+
+        private Ensure(object[] values)
+        {
+            this.values = values;
+        }
+
         public static Ensure That(bool assertion)
         {
             return new Ensure(assertion);
+        }
+
+        // TODO [Contracts]: Segregate into many interfaces 
+        public static Ensure That(object value)
+        {
+            return new Ensure(value);
+        }
+        
+        public static Ensure That(object[] values)
+        {
+            return new Ensure(values);
         }
 
         public Ensure IsTrue()
@@ -44,6 +69,21 @@ namespace Amarok.Framework.Contracts
             var exception = (T)Activator.CreateInstance(typeof(T), new[] { message });
             if (this.actualAssertion != this.expected)
                 throw exception;
+        }        
+
+        public Ensure IsNotNull()
+        {
+            return new Ensure(this.value != null);
+        }
+
+        public Ensure HasValue()
+        {
+            return new Ensure(!String.IsNullOrEmpty(Convert.ToString(this.value)));
+        }
+
+        public Ensure AreAllNotNull()
+        {
+            return new Ensure(values != null && values.All(x => x != null));
         }
     }
 }

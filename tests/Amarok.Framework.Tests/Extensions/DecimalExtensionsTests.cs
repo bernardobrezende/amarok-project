@@ -1,4 +1,6 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
+using System.Threading;
 using Amarok.Framework.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -35,8 +37,9 @@ namespace Amarok.Framework.Tests.Extensions
         {
             decimal input = 0.0M;
             string result = input.ToString(1);
+            string expected = String.Format("0{0}0", Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator);
             //
-            Assert.AreEqual("0.0", result);
+            Assert.AreEqual(expected, result);
         }
 
         [TestMethod]
@@ -71,8 +74,9 @@ namespace Amarok.Framework.Tests.Extensions
         {
             decimal input = 80.7946M;
             string result = input.ToString(2);
+            string expected = String.Format("80{0}79", Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator);
             //
-            Assert.AreEqual("80.79", result);
+            Assert.AreEqual(expected, result);
         }
 
         [TestMethod]
@@ -89,8 +93,9 @@ namespace Amarok.Framework.Tests.Extensions
         {
             decimal input = 120.88750M;
             string result = input.ToString(3);
+            string expected = String.Format("120{0}887", Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator);
             //
-            Assert.AreEqual("120.887", result);
+            Assert.AreEqual(expected, result);
         }
 
         [TestMethod]
@@ -125,8 +130,9 @@ namespace Amarok.Framework.Tests.Extensions
         {
             decimal input = -10.1M;
             string result = input.ToString(1);
+            string expected = String.Format("-10{0}1", Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator);
             //
-            Assert.AreEqual("-10.1", result);
+            Assert.AreEqual(expected, result);
         }
 
         [TestMethod]

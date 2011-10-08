@@ -96,6 +96,13 @@ namespace Amarok.Framework.Tests.Contracts
         }
 
         [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void If_I_Try_To_Ensure_Null_HasValue_It_Must_Throws_An_Exception()
+        {
+            Ensure.That(null).HasValue().Otherwise.Throw<NullReferenceException>();
+        }
+
+        [TestMethod]
         public void If_I_Try_To_Ensure_All_Elements_Of_An_Array_Are_Not_Null_It_Must_Not_Throws_Exception()
         {
             object[] values = { "foo", 5, DateTime.Now, new System.Text.StringBuilder() };

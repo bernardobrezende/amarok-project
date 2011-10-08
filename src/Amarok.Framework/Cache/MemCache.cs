@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Caching;
 using Amarok.Framework.Contracts;
 
@@ -6,8 +7,9 @@ namespace Amarok.Framework.Cache
 {
     public class MemCache : ICache
     {
+        private static IList<string> CurrentKeys;
         private static ObjectCache Cache { get; set; }
-        private static CacheItemPolicy Policy { get; set; }        
+        private static CacheItemPolicy Policy { get; set; }
         private static readonly object SyncRoot = new object();
 
         static MemCache()
@@ -18,6 +20,7 @@ namespace Amarok.Framework.Cache
                 // One day expiration by default
                 SlidingExpiration = new TimeSpan(24, 0, 0),
             };
+            CurrentKeys = new List<string>();
         }
 
         public bool Has(string key)
@@ -36,7 +39,12 @@ namespace Amarok.Framework.Cache
         {
             T retrievedItem = (T)Cache[key];
             Ensure.That(retrievedItem != null).IsTrue().Otherwise.Throw<ArgumentException>("Invalid key.");
-            return retrievedItem;            
+            return retrievedItem;
+        }
+
+        public bool Add<T>(KeyValuePair<string, T> keyValuePair)
+        {
+            return Add<T>(keyValuePair.Value, keyValuePair.Key);
         }
 
         public bool Add<T>(T item, string key)
@@ -59,17 +67,46 @@ namespace Amarok.Framework.Cache
                 .Throw<ArgumentException>("Unable to add the informed key-value pair to the cache.");
             //            
             lock (SyncRoot)
-            {                
+            {
                 if (!Has(key))
                 {
                     Cache.Add(new CacheItem(key, item), new CacheItemPolicy()
                     {
                         SlidingExpiration = expirationTime
                     });
+                    CurrentKeys.Add(key);
                     return true;
                 }
                 return false;
             }
+        }
+
+        public bool Remove(string key)
+        {
+            try
+            {
+                lock (SyncRoot)
+                    Cache.Remove(key);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private void Clear()
+        {
+            foreach (string key in CurrentKeys)
+            {
+                lock (SyncRoot)
+                    Cache.Remove(key);
+            }
+        }
+
+        ~MemCache()
+        {
+            this.Clear();
         }
     }
 }

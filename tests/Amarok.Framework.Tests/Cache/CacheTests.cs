@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Amarok.Framework.Cache;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -16,6 +17,18 @@ namespace Amarok.Framework.Tests.Cache
             ICache cache = new MemCache();
             bool result = cache.Add<string>(itemInCache, key);
             //
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void If_I_Try_To_Add_A_KeyValuePair_Structure()
+        {
+            string itemInCache = "The quick brown fox jumps over the lazy dog";
+            string key = "MS'_favorite_pangram";
+            //            
+            ICache cache = new MemCache();
+            bool result = cache.Add<string>(new KeyValuePair<string, string>(key, itemInCache));
+            //            
             Assert.IsTrue(result);
         }
 
@@ -59,6 +72,20 @@ namespace Amarok.Framework.Tests.Cache
             bool secondAddition = cache.Add<string>(anotherItem, key);
             //            
             Assert.IsFalse(secondAddition);
+        }
+
+        [TestMethod]
+        public void If_I_Try_To_Remove_An_Existent_Item_It_Must_Returns_True()
+        {
+            string itemInCache = "The quick brown fox jumps over the lazy dog";
+            string key = "MS'_favorite_pangram";
+            //            
+            ICache cache = new MemCache();
+            cache.Add<string>(itemInCache, key);
+            //
+            bool result = cache.Remove(key);
+            //
+            Assert.IsTrue(result);
         }
     }
 }

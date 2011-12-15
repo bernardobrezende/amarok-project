@@ -2,7 +2,7 @@ h1. Amarok Project
 
 Welcome to Amarok Project's repository.
 
-h2. Development environemnt
+h2. Development environment
 
 h3. Requirements
 * .NET Framework 4.0

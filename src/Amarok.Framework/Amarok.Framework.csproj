@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Cache\ICache.cs" />
     <Compile Include="Cache\MemCache.cs" />
+    <Compile Include="Collections\ReadOnlyDictionary.cs" />
     <Compile Include="Contracts\Ensure.cs" />
     <Compile Include="Extensions\DecimalExtensions.cs" />
     <Compile Include="Extensions\IListExtensions.cs" />

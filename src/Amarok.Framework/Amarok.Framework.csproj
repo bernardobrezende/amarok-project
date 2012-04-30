@@ -47,6 +47,7 @@
     <Compile Include="Collections\ReadOnlyDictionary.cs" />
     <Compile Include="Contracts\Ensure.cs" />
     <Compile Include="Extensions\DecimalExtensions.cs" />
+    <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\IListExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Patterns\Entity.cs" />

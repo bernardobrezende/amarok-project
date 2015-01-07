@@ -18,7 +18,11 @@
                 <ul id="menu">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Change Email", "ChangeEmail", "Account")</li>
+
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Change Password", "ChangePassword", "Account")</li>
+                    }
                 </ul>
             </div>
         </div>
